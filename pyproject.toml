@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vcamnamer"
+version = "0.1.0"
+description = "Ubuntu GUI tool to rename OBS virtual camera devices via udev rules"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+keywords = ["v4l2", "obs", "virtual-camera", "udev", "linux"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: POSIX :: Linux",
+]
+# All runtime deps are stdlib (tkinter, json, fcntl, ctypes); no third-party required.
+dependencies = []
+
+[project.scripts]
+vcamnamer = "vcamnamer.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["vcamnamer*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v"
+
+[tool.ruff]
+line-length = 100
+target-version = "py38"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
